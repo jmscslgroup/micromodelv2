@@ -76,3 +76,20 @@ void convertToBus(SL_Bus_micromodelv2_std_msgs_Float64* busPtr, std_msgs::Float6
   busPtr->Data =  msgPtr->data;
 }
 
+
+// Conversions between SL_Bus_micromodelv2_std_msgs_UInt8 and std_msgs::UInt8
+
+void convertFromBus(std_msgs::UInt8* msgPtr, SL_Bus_micromodelv2_std_msgs_UInt8 const* busPtr)
+{
+  const std::string rosMessageType("std_msgs/UInt8");
+
+  msgPtr->data =  busPtr->Data;
+}
+
+void convertToBus(SL_Bus_micromodelv2_std_msgs_UInt8* busPtr, std_msgs::UInt8 const* msgPtr)
+{
+  const std::string rosMessageType("std_msgs/UInt8");
+
+  busPtr->Data =  msgPtr->data;
+}
+

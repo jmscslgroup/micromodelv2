@@ -6,6 +6,7 @@
 #include <geometry_msgs/Vector3.h>
 #include <ros/time.h>
 #include <std_msgs/Float64.h>
+#include <std_msgs/UInt8.h>
 #include "micromodelv2_types.h"
 #include "slros_msgconvert_utils.h"
 
@@ -21,6 +22,9 @@ void convertToBus(SL_Bus_micromodelv2_ros_time_Time* busPtr, ros::Time const* ms
 
 void convertFromBus(std_msgs::Float64* msgPtr, SL_Bus_micromodelv2_std_msgs_Float64 const* busPtr);
 void convertToBus(SL_Bus_micromodelv2_std_msgs_Float64* busPtr, std_msgs::Float64 const* msgPtr);
+
+void convertFromBus(std_msgs::UInt8* msgPtr, SL_Bus_micromodelv2_std_msgs_UInt8 const* busPtr);
+void convertToBus(SL_Bus_micromodelv2_std_msgs_UInt8* busPtr, std_msgs::UInt8 const* msgPtr);
 
 
 #endif

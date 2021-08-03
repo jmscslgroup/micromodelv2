@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'micromodelv2'.
 //
-// Model version                  : 1.83
+// Model version                  : 1.89
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Jul 26 09:18:19 2021
+// C/C++ source code generated on : Tue Aug  3 09:31:37 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -73,23 +73,6 @@ P_micromodelv2_T micromodelv2_P = {
   },
 
   // Computed Parameter: Constant_Value_a
-  //  Referenced by: '<S13>/Constant'
-
-  {
-    {
-      0.0,                             // X
-      0.0,                             // Y
-      0.0                              // Z
-    },                                 // Linear
-
-    {
-      0.0,                             // X
-      0.0,                             // Y
-      0.0                              // Z
-    }                                  // Angular
-  },
-
-  // Computed Parameter: Constant_Value_m
   //  Referenced by: '<S15>/Constant'
 
   {
@@ -106,8 +89,25 @@ P_micromodelv2_T micromodelv2_P = {
     }                                  // Angular
   },
 
+  // Computed Parameter: Constant_Value_m
+  //  Referenced by: '<S17>/Constant'
+
+  {
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    },                                 // Linear
+
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    }                                  // Angular
+  },
+
   // Computed Parameter: Out1_Y0
-  //  Referenced by: '<S18>/Out1'
+  //  Referenced by: '<S20>/Out1'
 
   {
     {
@@ -124,7 +124,7 @@ P_micromodelv2_T micromodelv2_P = {
   },
 
   // Computed Parameter: Constant_Value_mf
-  //  Referenced by: '<S11>/Constant'
+  //  Referenced by: '<S13>/Constant'
 
   {
     {
@@ -141,7 +141,7 @@ P_micromodelv2_T micromodelv2_P = {
   },
 
   // Computed Parameter: Out1_Y0_e
-  //  Referenced by: '<S19>/Out1'
+  //  Referenced by: '<S21>/Out1'
 
   {
     {
@@ -158,7 +158,7 @@ P_micromodelv2_T micromodelv2_P = {
   },
 
   // Computed Parameter: Constant_Value_o
-  //  Referenced by: '<S12>/Constant'
+  //  Referenced by: '<S14>/Constant'
 
   {
     {
@@ -175,17 +175,24 @@ P_micromodelv2_T micromodelv2_P = {
   },
 
   // Computed Parameter: Out1_Y0_p
-  //  Referenced by: '<S17>/Out1'
+  //  Referenced by: '<S19>/Out1'
 
   {
     0.0                                // Data
   },
 
   // Computed Parameter: Constant_Value_j
-  //  Referenced by: '<S10>/Constant'
+  //  Referenced by: '<S12>/Constant'
 
   {
     0.0                                // Data
+  },
+
+  // Computed Parameter: Constant_Value_oj
+  //  Referenced by: '<S4>/Constant'
+
+  {
+    0U                                 // Data
   },
 
   // Expression: 1e-9
@@ -214,12 +221,12 @@ P_micromodelv2_T micromodelv2_P = {
   0.0,
 
   // Expression: 0
-  //  Referenced by: '<S8>/Constant3'
+  //  Referenced by: '<S10>/Constant3'
 
   0.0,
 
   // Expression: 0
-  //  Referenced by: '<S9>/Constant3'
+  //  Referenced by: '<S11>/Constant3'
 
   0.0,
 

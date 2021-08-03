@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'micromodelv2'.
 //
-// Model version                  : 1.83
+// Model version                  : 1.89
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Jul 26 09:18:19 2021
+// C/C++ source code generated on : Tue Aug  3 09:31:37 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -175,63 +175,65 @@ void micromodelv2_step(void)
 {
   // local block i/o variables
   real_T rtb_Subtract1;
+  SL_Bus_micromodelv2_std_msgs_UInt8 rtb_BusAssignment3_o;
   real_T rtb_TotalTime;
   real_T u0;
   int32_T i;
   boolean_T b_varargout_1;
+  boolean_T value;
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe3'
-  // MATLABSystem: '<S12>/SourceBlock' incorporates:
-  //   Inport: '<S19>/In1'
+  // MATLABSystem: '<S14>/SourceBlock' incorporates:
+  //   Inport: '<S21>/In1'
 
   b_varargout_1 = Sub_micromodelv2_15.getLatestMessage
     (&micromodelv2_B.BusAssignment);
 
-  // Outputs for Enabled SubSystem: '<S12>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S19>/Enable'
+  // Outputs for Enabled SubSystem: '<S14>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S21>/Enable'
 
   if (b_varargout_1) {
     micromodelv2_B.In1 = micromodelv2_B.BusAssignment;
   }
 
-  // End of MATLABSystem: '<S12>/SourceBlock'
-  // End of Outputs for SubSystem: '<S12>/Enabled Subsystem'
+  // End of MATLABSystem: '<S14>/SourceBlock'
+  // End of Outputs for SubSystem: '<S14>/Enabled Subsystem'
   // End of Outputs for SubSystem: '<Root>/Subscribe3'
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe'
-  // MATLABSystem: '<S10>/SourceBlock' incorporates:
-  //   Inport: '<S17>/In1'
+  // MATLABSystem: '<S12>/SourceBlock' incorporates:
+  //   Inport: '<S19>/In1'
 
   b_varargout_1 = Sub_micromodelv2_19.getLatestMessage
     (&micromodelv2_B.b_varargout_2);
 
-  // Outputs for Enabled SubSystem: '<S10>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S17>/Enable'
+  // Outputs for Enabled SubSystem: '<S12>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S19>/Enable'
 
   if (b_varargout_1) {
     micromodelv2_B.In1_n = micromodelv2_B.b_varargout_2;
   }
 
-  // End of MATLABSystem: '<S10>/SourceBlock'
-  // End of Outputs for SubSystem: '<S10>/Enabled Subsystem'
+  // End of MATLABSystem: '<S12>/SourceBlock'
+  // End of Outputs for SubSystem: '<S12>/Enabled Subsystem'
   // End of Outputs for SubSystem: '<Root>/Subscribe'
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe2'
-  // MATLABSystem: '<S11>/SourceBlock' incorporates:
-  //   Inport: '<S18>/In1'
+  // MATLABSystem: '<S13>/SourceBlock' incorporates:
+  //   Inport: '<S20>/In1'
 
   b_varargout_1 = Sub_micromodelv2_22.getLatestMessage
     (&micromodelv2_B.BusAssignment);
 
-  // Outputs for Enabled SubSystem: '<S11>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S18>/Enable'
+  // Outputs for Enabled SubSystem: '<S13>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S20>/Enable'
 
   if (b_varargout_1) {
     micromodelv2_B.In1_p = micromodelv2_B.BusAssignment;
   }
 
-  // End of MATLABSystem: '<S11>/SourceBlock'
-  // End of Outputs for SubSystem: '<S11>/Enabled Subsystem'
+  // End of MATLABSystem: '<S13>/SourceBlock'
+  // End of Outputs for SubSystem: '<S13>/Enabled Subsystem'
   // End of Outputs for SubSystem: '<Root>/Subscribe2'
   micromodelv2_MovingAverage(micromodelv2_B.In1_p.Linear.Z,
     &micromodelv2_B.MovingAverage, &micromodelv2_DW.MovingAverage,
@@ -274,6 +276,9 @@ void micromodelv2_step(void)
   // MATLABSystem: '<Root>/Get Parameter7'
   ParamGet_micromodelv2_67.get_parameter(&b_varargout_1);
 
+  // MATLABSystem: '<Root>/Get Parameter8'
+  ParamGet_micromodelv2_69.get_parameter(&value);
+
   // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
   //   MATLABSystem: '<Root>/Get Parameter1'
   //   MATLABSystem: '<Root>/Get Parameter2'
@@ -282,6 +287,7 @@ void micromodelv2_step(void)
   //   MATLABSystem: '<Root>/Get Parameter5'
   //   MATLABSystem: '<Root>/Get Parameter6'
   //   MATLABSystem: '<Root>/Get Parameter7'
+  //   MATLABSystem: '<Root>/Get Parameter8'
   //   Memory: '<Root>/Memory'
   //   Sum: '<Root>/Subtract'
 
@@ -354,19 +360,21 @@ void micromodelv2_step(void)
     }
   }
 
-  if (micromodelv2_B.MovingAverage1.MovingAverage > 20.0) {
-    micromodelv2_DW.v_des2 = micromodelv2_B.MovingAverage1.MovingAverage;
-    if ((!(micromodelv2_B.v_des > micromodelv2_DW.v_des2)) && (!rtIsNaN
-         (micromodelv2_DW.v_des2))) {
-      micromodelv2_B.v_des = micromodelv2_DW.v_des2;
-    }
-  } else if (micromodelv2_B.MovingAverage1.MovingAverage > 15.0) {
-    micromodelv2_DW.v_des2 += (micromodelv2_B.MovingAverage1.MovingAverage -
-      micromodelv2_DW.v_des2) * (micromodelv2_B.MovingAverage1.MovingAverage -
-      15.0) / 5.0;
-    if ((!(micromodelv2_B.v_des > micromodelv2_DW.v_des2)) && (!rtIsNaN
-         (micromodelv2_DW.v_des2))) {
-      micromodelv2_B.v_des = micromodelv2_DW.v_des2;
+  if (value) {
+    if (micromodelv2_B.MovingAverage1.MovingAverage > 20.0) {
+      micromodelv2_DW.v_des2 = micromodelv2_B.MovingAverage1.MovingAverage;
+      if ((!(micromodelv2_B.v_des > micromodelv2_DW.v_des2)) && (!rtIsNaN
+           (micromodelv2_DW.v_des2))) {
+        micromodelv2_B.v_des = micromodelv2_DW.v_des2;
+      }
+    } else if (micromodelv2_B.MovingAverage1.MovingAverage > 15.0) {
+      micromodelv2_DW.v_des2 += (micromodelv2_B.MovingAverage1.MovingAverage -
+        micromodelv2_DW.v_des2) * (micromodelv2_B.MovingAverage1.MovingAverage -
+        15.0) / 5.0;
+      if ((!(micromodelv2_B.v_des > micromodelv2_DW.v_des2)) && (!rtIsNaN
+           (micromodelv2_DW.v_des2))) {
+        micromodelv2_B.v_des = micromodelv2_DW.v_des2;
+      }
     }
   }
 
@@ -419,12 +427,16 @@ void micromodelv2_step(void)
   }
 
   if (micromodelv2_B.In1_n.Data >= micromodelv2_B.dx_5) {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 0U;
     micromodelv2_B.dx_4 = ((micromodelv2_B.In1_n.Data - micromodelv2_B.dx_5) /
       micromodelv2_B.dx_5 + 1.0) * micromodelv2_B.v_des;
     if (!(micromodelv2_B.dx_4 < 30.0)) {
       micromodelv2_B.dx_4 = 30.0;
     }
   } else if (micromodelv2_B.In1_n.Data >= micromodelv2_B.dx_4) {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 1U;
     u0 = (micromodelv2_DW.v_des2 - micromodelv2_B.v_des) * (micromodelv2_B.dx_5
       - micromodelv2_B.In1_n.Data) / (micromodelv2_B.dx_5 - micromodelv2_B.dx_4);
     if ((0.0 < u0) || rtIsNaN(u0)) {
@@ -433,17 +445,25 @@ void micromodelv2_step(void)
 
     micromodelv2_B.dx_4 = micromodelv2_B.v_des + u0;
   } else if (micromodelv2_B.In1_n.Data >= micromodelv2_B.dx_3) {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 2U;
     micromodelv2_B.dx_4 = micromodelv2_DW.v_des2;
   } else if (micromodelv2_B.In1_n.Data >= micromodelv2_B.dx_2) {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 3U;
     micromodelv2_B.dx_4 = (micromodelv2_DW.v_des2 - micromodelv2_B.bsum) *
       (micromodelv2_B.In1_n.Data - micromodelv2_B.dx_2) / (micromodelv2_B.dx_3 -
       micromodelv2_B.dx_2) + micromodelv2_B.bsum;
   } else if (micromodelv2_B.In1_n.Data >= micromodelv2_B.dx_1) {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 4U;
     micromodelv2_B.dx_4 = (micromodelv2_B.In1_n.Data - micromodelv2_B.dx_1) *
       micromodelv2_B.bsum / (micromodelv2_B.dx_2 - micromodelv2_B.dx_1);
     micromodelv2_DW.d1 = 1.0;
     micromodelv2_DW.d2 = 0.0;
   } else {
+    // BusAssignment: '<Root>/Bus Assignment3'
+    rtb_BusAssignment3_o.Data = 5U;
     micromodelv2_B.dx_4 = 0.0;
     micromodelv2_DW.d1 = 0.0;
   }
@@ -457,10 +477,16 @@ void micromodelv2_step(void)
   micromodelv2_B.BusAssignment.Angular.Z = micromodelv2_P.Constant_Value_i;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish'
-  // MATLABSystem: '<S5>/SinkBlock'
+  // MATLABSystem: '<S6>/SinkBlock'
   Pub_micromodelv2_29.publish(&micromodelv2_B.BusAssignment);
 
   // End of Outputs for SubSystem: '<Root>/Publish'
+
+  // Outputs for Atomic SubSystem: '<Root>/Publish3'
+  // MATLABSystem: '<S9>/SinkBlock'
+  Pub_micromodelv2_74.publish(&rtb_BusAssignment3_o);
+
+  // End of Outputs for SubSystem: '<Root>/Publish3'
 
   // BusAssignment: '<Root>/Bus Assignment1' incorporates:
   //   Constant: '<Root>/Constant1'
@@ -472,7 +498,7 @@ void micromodelv2_step(void)
   micromodelv2_B.BusAssignment.Angular.Z = micromodelv2_P.Constant1_Value;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish1'
-  // MATLABSystem: '<S6>/SinkBlock'
+  // MATLABSystem: '<S7>/SinkBlock'
   Pub_micromodelv2_50.publish(&micromodelv2_B.BusAssignment);
 
   // End of Outputs for SubSystem: '<Root>/Publish1'
@@ -487,40 +513,40 @@ void micromodelv2_step(void)
   micromodelv2_B.BusAssignment.Angular.Z = micromodelv2_P.Constant2_Value;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish2'
-  // MATLABSystem: '<S7>/SinkBlock'
+  // MATLABSystem: '<S8>/SinkBlock'
   Pub_micromodelv2_51.publish(&micromodelv2_B.BusAssignment);
 
   // End of Outputs for SubSystem: '<Root>/Publish2'
 
-  // BusAssignment: '<S8>/Bus Assignment3' incorporates:
-  //   Constant: '<S13>/Constant'
-  //   Constant: '<S8>/Constant3'
+  // BusAssignment: '<S10>/Bus Assignment3' incorporates:
+  //   Constant: '<S10>/Constant3'
+  //   Constant: '<S15>/Constant'
 
   micromodelv2_B.BusAssignment = micromodelv2_P.Constant_Value_a;
   micromodelv2_B.BusAssignment.Linear.X =
     micromodelv2_B.MovingAverage1.MovingAverage;
   micromodelv2_B.BusAssignment.Angular.Z = micromodelv2_P.Constant3_Value;
 
-  // Outputs for Atomic SubSystem: '<S8>/Publish3'
-  // MATLABSystem: '<S14>/SinkBlock'
+  // Outputs for Atomic SubSystem: '<S10>/Publish3'
+  // MATLABSystem: '<S16>/SinkBlock'
   Pub_micromodelv2_57.publish(&micromodelv2_B.BusAssignment);
 
-  // End of Outputs for SubSystem: '<S8>/Publish3'
+  // End of Outputs for SubSystem: '<S10>/Publish3'
 
-  // BusAssignment: '<S9>/Bus Assignment3' incorporates:
-  //   Constant: '<S15>/Constant'
-  //   Constant: '<S9>/Constant3'
+  // BusAssignment: '<S11>/Bus Assignment3' incorporates:
+  //   Constant: '<S11>/Constant3'
+  //   Constant: '<S17>/Constant'
 
   micromodelv2_B.BusAssignment = micromodelv2_P.Constant_Value_m;
   micromodelv2_B.BusAssignment.Linear.X =
     micromodelv2_B.MovingAverage.MovingAverage;
   micromodelv2_B.BusAssignment.Angular.Z = micromodelv2_P.Constant3_Value_p;
 
-  // Outputs for Atomic SubSystem: '<S9>/Publish3'
-  // MATLABSystem: '<S16>/SinkBlock'
+  // Outputs for Atomic SubSystem: '<S11>/Publish3'
+  // MATLABSystem: '<S18>/SinkBlock'
   Pub_micromodelv2_65.publish(&micromodelv2_B.BusAssignment);
 
-  // End of Outputs for SubSystem: '<S9>/Publish3'
+  // End of Outputs for SubSystem: '<S11>/Publish3'
 
   // Update for Memory: '<Root>/Memory'
   micromodelv2_DW.Memory_PreviousInput = rtb_TotalTime;
@@ -537,8 +563,8 @@ void micromodelv2_initialize(void)
   {
     int32_T i;
     char_T b_zeroDelimTopic_0[8];
-    char_T b_zeroDelimTopic_2[7];
-    char_T b_zeroDelimTopic_1[6];
+    char_T b_zeroDelimTopic_1[7];
+    char_T b_zeroDelimTopic_2[6];
     char_T b_zeroDelimTopic[4];
     char_T b_zeroDelimName[3];
     static const char_T tmp[9] = { 'l', 'e', 'a', 'd', '_', 'd', 'i', 's', 't' };
@@ -547,33 +573,37 @@ void micromodelv2_initialize(void)
 
     static const char_T tmp_1[7] = { 'c', 'm', 'd', '_', 'v', 'e', 'l' };
 
-    static const char_T tmp_2[5] = { 'v', '_', 'd', 'e', 's' };
+    static const char_T tmp_2[6] = { 'r', 'e', 'g', 'i', 'o', 'n' };
 
-    static const char_T tmp_3[6] = { 'v', '_', 'd', 'e', 's', '2' };
+    static const char_T tmp_3[5] = { 'v', '_', 'd', 'e', 's' };
 
-    static const char_T tmp_4[18] = { 'e', 's', 't', 'i', 'm', 'a', 't', 'e',
+    static const char_T tmp_4[6] = { 'v', '_', 'd', 'e', 's', '2' };
+
+    static const char_T tmp_5[18] = { 'e', 's', 't', 'i', 'm', 'a', 't', 'e',
       'd', '_', 'l', 'e', 'a', 'd', '_', 'v', 'e', 'l' };
 
-    static const char_T tmp_5[21] = { 's', 'm', 'o', 'o', 't', 'h', 'e', 'd',
+    static const char_T tmp_6[21] = { 's', 'm', 'o', 'o', 't', 'h', 'e', 'd',
       '_', 'r', 'e', 'l', 'a', 't', 'i', 'v', 'e', '_', 'v', 'e', 'l' };
 
-    static const char_T tmp_6[11] = { 'g', 'a', 'p', '_', 'v', 'a', 'r', 'i',
+    static const char_T tmp_7[11] = { 'g', 'a', 'p', '_', 'v', 'a', 'r', 'i',
       'a', 'n', 't' };
+
+    static const char_T tmp_8[8] = { 'f', 'r', 'e', 'e', 'f', 'l', 'o', 'w' };
 
     // InitializeConditions for Memory: '<Root>/Memory'
     micromodelv2_DW.Memory_PreviousInput =
       micromodelv2_P.Memory_InitialCondition;
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe3'
-    // SystemInitialize for Enabled SubSystem: '<S12>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S19>/Out1' incorporates:
-    //   Inport: '<S19>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S14>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S21>/Out1' incorporates:
+    //   Inport: '<S21>/In1'
 
     micromodelv2_B.In1 = micromodelv2_P.Out1_Y0_e;
 
-    // End of SystemInitialize for SubSystem: '<S12>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S14>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S12>/SourceBlock'
+    // Start for MATLABSystem: '<S14>/SourceBlock'
     micromodelv2_DW.obj_cg.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_cg.isInitialized = 1;
     b_zeroDelimTopic[0] = 'v';
@@ -586,15 +616,15 @@ void micromodelv2_initialize(void)
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe3'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe'
-    // SystemInitialize for Enabled SubSystem: '<S10>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S17>/Out1' incorporates:
-    //   Inport: '<S17>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S12>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S19>/Out1' incorporates:
+    //   Inport: '<S19>/In1'
 
     micromodelv2_B.In1_n = micromodelv2_P.Out1_Y0_p;
 
-    // End of SystemInitialize for SubSystem: '<S10>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S12>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S10>/SourceBlock'
+    // Start for MATLABSystem: '<S12>/SourceBlock'
     micromodelv2_DW.obj_m.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_m.isInitialized = 1;
     for (i = 0; i < 9; i++) {
@@ -606,19 +636,19 @@ void micromodelv2_initialize(void)
       1);
     micromodelv2_DW.obj_m.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S10>/SourceBlock'
+    // End of Start for MATLABSystem: '<S12>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe2'
-    // SystemInitialize for Enabled SubSystem: '<S11>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S18>/Out1' incorporates:
-    //   Inport: '<S18>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S13>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S20>/Out1' incorporates:
+    //   Inport: '<S20>/In1'
 
     micromodelv2_B.In1_p = micromodelv2_P.Out1_Y0;
 
-    // End of SystemInitialize for SubSystem: '<S11>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S13>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S11>/SourceBlock'
+    // Start for MATLABSystem: '<S13>/SourceBlock'
     micromodelv2_DW.obj_d.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_d.isInitialized = 1;
     for (i = 0; i < 7; i++) {
@@ -629,7 +659,7 @@ void micromodelv2_initialize(void)
     Sub_micromodelv2_22.createSubscriber(&b_zeroDelimTopic_0[0], 1);
     micromodelv2_DW.obj_d.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S11>/SourceBlock'
+    // End of Start for MATLABSystem: '<S13>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe2'
 
     // SystemInitialize for MATLAB Function: '<Root>/MATLAB Function1'
@@ -637,7 +667,7 @@ void micromodelv2_initialize(void)
     micromodelv2_DW.d2 = 1.0;
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Publish'
-    // Start for MATLABSystem: '<S5>/SinkBlock'
+    // Start for MATLABSystem: '<S6>/SinkBlock'
     micromodelv2_DW.obj_jz.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_jz.isInitialized = 1;
     for (i = 0; i < 7; i++) {
@@ -648,68 +678,83 @@ void micromodelv2_initialize(void)
     Pub_micromodelv2_29.createPublisher(&b_zeroDelimTopic_0[0], 1);
     micromodelv2_DW.obj_jz.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S5>/SinkBlock'
+    // End of Start for MATLABSystem: '<S6>/SinkBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Publish'
 
-    // SystemInitialize for Atomic SubSystem: '<Root>/Publish1'
-    // Start for MATLABSystem: '<S6>/SinkBlock'
-    micromodelv2_DW.obj_f.matlabCodegenIsDeleted = false;
-    micromodelv2_DW.obj_f.isInitialized = 1;
-    for (i = 0; i < 5; i++) {
+    // SystemInitialize for Atomic SubSystem: '<Root>/Publish3'
+    // Start for MATLABSystem: '<S9>/SinkBlock'
+    micromodelv2_DW.obj_ce.matlabCodegenIsDeleted = false;
+    micromodelv2_DW.obj_ce.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
       b_zeroDelimTopic_1[i] = tmp_2[i];
     }
 
-    b_zeroDelimTopic_1[5] = '\x00';
-    Pub_micromodelv2_50.createPublisher(&b_zeroDelimTopic_1[0], 1);
-    micromodelv2_DW.obj_f.isSetupComplete = true;
+    b_zeroDelimTopic_1[6] = '\x00';
+    Pub_micromodelv2_74.createPublisher(&b_zeroDelimTopic_1[0], 1);
+    micromodelv2_DW.obj_ce.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S6>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<Root>/Publish1'
+    // End of Start for MATLABSystem: '<S9>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<Root>/Publish3'
 
-    // SystemInitialize for Atomic SubSystem: '<Root>/Publish2'
+    // SystemInitialize for Atomic SubSystem: '<Root>/Publish1'
     // Start for MATLABSystem: '<S7>/SinkBlock'
-    micromodelv2_DW.obj_ct.matlabCodegenIsDeleted = false;
-    micromodelv2_DW.obj_ct.isInitialized = 1;
-    for (i = 0; i < 6; i++) {
+    micromodelv2_DW.obj_f.matlabCodegenIsDeleted = false;
+    micromodelv2_DW.obj_f.isInitialized = 1;
+    for (i = 0; i < 5; i++) {
       b_zeroDelimTopic_2[i] = tmp_3[i];
     }
 
-    b_zeroDelimTopic_2[6] = '\x00';
-    Pub_micromodelv2_51.createPublisher(&b_zeroDelimTopic_2[0], 1);
-    micromodelv2_DW.obj_ct.isSetupComplete = true;
+    b_zeroDelimTopic_2[5] = '\x00';
+    Pub_micromodelv2_50.createPublisher(&b_zeroDelimTopic_2[0], 1);
+    micromodelv2_DW.obj_f.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S7>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<Root>/Publish1'
+
+    // SystemInitialize for Atomic SubSystem: '<Root>/Publish2'
+    // Start for MATLABSystem: '<S8>/SinkBlock'
+    micromodelv2_DW.obj_ct.matlabCodegenIsDeleted = false;
+    micromodelv2_DW.obj_ct.isInitialized = 1;
+    for (i = 0; i < 6; i++) {
+      b_zeroDelimTopic_1[i] = tmp_4[i];
+    }
+
+    b_zeroDelimTopic_1[6] = '\x00';
+    Pub_micromodelv2_51.createPublisher(&b_zeroDelimTopic_1[0], 1);
+    micromodelv2_DW.obj_ct.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<S8>/SinkBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Publish2'
 
-    // SystemInitialize for Atomic SubSystem: '<S8>/Publish3'
-    // Start for MATLABSystem: '<S14>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S10>/Publish3'
+    // Start for MATLABSystem: '<S16>/SinkBlock'
     micromodelv2_DW.obj_b.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_b.isInitialized = 1;
     for (i = 0; i < 18; i++) {
-      micromodelv2_B.b_zeroDelimTopic_m[i] = tmp_4[i];
+      micromodelv2_B.b_zeroDelimTopic_m[i] = tmp_5[i];
     }
 
     micromodelv2_B.b_zeroDelimTopic_m[18] = '\x00';
     Pub_micromodelv2_57.createPublisher(&micromodelv2_B.b_zeroDelimTopic_m[0], 1);
     micromodelv2_DW.obj_b.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S14>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S8>/Publish3'
+    // End of Start for MATLABSystem: '<S16>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S10>/Publish3'
 
-    // SystemInitialize for Atomic SubSystem: '<S9>/Publish3'
-    // Start for MATLABSystem: '<S16>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S11>/Publish3'
+    // Start for MATLABSystem: '<S18>/SinkBlock'
     micromodelv2_DW.obj_ek.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_ek.isInitialized = 1;
     for (i = 0; i < 21; i++) {
-      micromodelv2_B.b_zeroDelimTopic[i] = tmp_5[i];
+      micromodelv2_B.b_zeroDelimTopic[i] = tmp_6[i];
     }
 
     micromodelv2_B.b_zeroDelimTopic[21] = '\x00';
     Pub_micromodelv2_65.createPublisher(&micromodelv2_B.b_zeroDelimTopic[0], 1);
     micromodelv2_DW.obj_ek.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S16>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S9>/Publish3'
+    // End of Start for MATLABSystem: '<S18>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S11>/Publish3'
     micromodelv2_MovingAverage_Init(&micromodelv2_DW.MovingAverage,
       &micromodelv2_P.MovingAverage);
     micromodelv2_MovingAverage_Init(&micromodelv2_DW.MovingAverage1,
@@ -793,7 +838,7 @@ void micromodelv2_initialize(void)
     micromodelv2_DW.obj_e.matlabCodegenIsDeleted = false;
     micromodelv2_DW.obj_e.isInitialized = 1;
     for (i = 0; i < 11; i++) {
-      micromodelv2_B.b_zeroDelimName[i] = tmp_6[i];
+      micromodelv2_B.b_zeroDelimName[i] = tmp_7[i];
     }
 
     micromodelv2_B.b_zeroDelimName[11] = '\x00';
@@ -803,6 +848,21 @@ void micromodelv2_initialize(void)
     micromodelv2_DW.obj_e.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<Root>/Get Parameter7'
+
+    // Start for MATLABSystem: '<Root>/Get Parameter8'
+    micromodelv2_DW.obj_g.matlabCodegenIsDeleted = false;
+    micromodelv2_DW.obj_g.isInitialized = 1;
+    for (i = 0; i < 8; i++) {
+      micromodelv2_B.b_zeroDelimName_k[i] = tmp_8[i];
+    }
+
+    micromodelv2_B.b_zeroDelimName_k[8] = '\x00';
+    ParamGet_micromodelv2_69.initialize(&micromodelv2_B.b_zeroDelimName_k[0]);
+    ParamGet_micromodelv2_69.initialize_error_codes(0, 1, 2, 3);
+    ParamGet_micromodelv2_69.set_initial_value(false);
+    micromodelv2_DW.obj_g.isSetupComplete = true;
+
+    // End of Start for MATLABSystem: '<Root>/Get Parameter8'
   }
 }
 
@@ -810,30 +870,30 @@ void micromodelv2_initialize(void)
 void micromodelv2_terminate(void)
 {
   // Terminate for Atomic SubSystem: '<Root>/Subscribe3'
-  // Terminate for MATLABSystem: '<S12>/SourceBlock'
+  // Terminate for MATLABSystem: '<S14>/SourceBlock'
   if (!micromodelv2_DW.obj_cg.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_cg.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S12>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S14>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe3'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe'
-  // Terminate for MATLABSystem: '<S10>/SourceBlock'
+  // Terminate for MATLABSystem: '<S12>/SourceBlock'
   if (!micromodelv2_DW.obj_m.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_m.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S10>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S12>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe2'
-  // Terminate for MATLABSystem: '<S11>/SourceBlock'
+  // Terminate for MATLABSystem: '<S13>/SourceBlock'
   if (!micromodelv2_DW.obj_d.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_d.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S11>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S13>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe2'
   micromodelv2_MovingAverage_Term(&micromodelv2_DW.MovingAverage);
   micromodelv2_MovingAverage_Term(&micromodelv2_DW.MovingAverage1);
@@ -894,50 +954,66 @@ void micromodelv2_terminate(void)
 
   // End of Terminate for MATLABSystem: '<Root>/Get Parameter7'
 
+  // Terminate for MATLABSystem: '<Root>/Get Parameter8'
+  if (!micromodelv2_DW.obj_g.matlabCodegenIsDeleted) {
+    micromodelv2_DW.obj_g.matlabCodegenIsDeleted = true;
+  }
+
+  // End of Terminate for MATLABSystem: '<Root>/Get Parameter8'
+
   // Terminate for Atomic SubSystem: '<Root>/Publish'
-  // Terminate for MATLABSystem: '<S5>/SinkBlock'
+  // Terminate for MATLABSystem: '<S6>/SinkBlock'
   if (!micromodelv2_DW.obj_jz.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_jz.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S5>/SinkBlock'
+  // End of Terminate for MATLABSystem: '<S6>/SinkBlock'
   // End of Terminate for SubSystem: '<Root>/Publish'
 
+  // Terminate for Atomic SubSystem: '<Root>/Publish3'
+  // Terminate for MATLABSystem: '<S9>/SinkBlock'
+  if (!micromodelv2_DW.obj_ce.matlabCodegenIsDeleted) {
+    micromodelv2_DW.obj_ce.matlabCodegenIsDeleted = true;
+  }
+
+  // End of Terminate for MATLABSystem: '<S9>/SinkBlock'
+  // End of Terminate for SubSystem: '<Root>/Publish3'
+
   // Terminate for Atomic SubSystem: '<Root>/Publish1'
-  // Terminate for MATLABSystem: '<S6>/SinkBlock'
+  // Terminate for MATLABSystem: '<S7>/SinkBlock'
   if (!micromodelv2_DW.obj_f.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_f.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S6>/SinkBlock'
+  // End of Terminate for MATLABSystem: '<S7>/SinkBlock'
   // End of Terminate for SubSystem: '<Root>/Publish1'
 
   // Terminate for Atomic SubSystem: '<Root>/Publish2'
-  // Terminate for MATLABSystem: '<S7>/SinkBlock'
+  // Terminate for MATLABSystem: '<S8>/SinkBlock'
   if (!micromodelv2_DW.obj_ct.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_ct.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S7>/SinkBlock'
+  // End of Terminate for MATLABSystem: '<S8>/SinkBlock'
   // End of Terminate for SubSystem: '<Root>/Publish2'
 
-  // Terminate for Atomic SubSystem: '<S8>/Publish3'
-  // Terminate for MATLABSystem: '<S14>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S10>/Publish3'
+  // Terminate for MATLABSystem: '<S16>/SinkBlock'
   if (!micromodelv2_DW.obj_b.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_b.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S14>/SinkBlock'
-  // End of Terminate for SubSystem: '<S8>/Publish3'
+  // End of Terminate for MATLABSystem: '<S16>/SinkBlock'
+  // End of Terminate for SubSystem: '<S10>/Publish3'
 
-  // Terminate for Atomic SubSystem: '<S9>/Publish3'
-  // Terminate for MATLABSystem: '<S16>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S11>/Publish3'
+  // Terminate for MATLABSystem: '<S18>/SinkBlock'
   if (!micromodelv2_DW.obj_ek.matlabCodegenIsDeleted) {
     micromodelv2_DW.obj_ek.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S16>/SinkBlock'
-  // End of Terminate for SubSystem: '<S9>/Publish3'
+  // End of Terminate for MATLABSystem: '<S18>/SinkBlock'
+  // End of Terminate for SubSystem: '<S11>/Publish3'
 }
 
 //

@@ -21,6 +21,9 @@ SimulinkPublisher<geometry_msgs::Twist, SL_Bus_micromodelv2_geometry_msgs_Twist>
 // For Block micromodelv2/Publish2
 SimulinkPublisher<geometry_msgs::Twist, SL_Bus_micromodelv2_geometry_msgs_Twist> Pub_micromodelv2_51;
 
+// For Block micromodelv2/Publish3
+SimulinkPublisher<std_msgs::UInt8, SL_Bus_micromodelv2_std_msgs_UInt8> Pub_micromodelv2_74;
+
 // For Block micromodelv2/Publisher/Publish3
 SimulinkPublisher<geometry_msgs::Twist, SL_Bus_micromodelv2_geometry_msgs_Twist> Pub_micromodelv2_57;
 
@@ -47,6 +50,9 @@ SimulinkParameterGetter<real64_T, double> ParamGet_micromodelv2_41;
 
 // For Block micromodelv2/Get Parameter7
 SimulinkParameterGetter<boolean_T, bool> ParamGet_micromodelv2_67;
+
+// For Block micromodelv2/Get Parameter8
+SimulinkParameterGetter<boolean_T, bool> ParamGet_micromodelv2_69;
 
 void slros_node_init(int argc, char** argv)
 {
