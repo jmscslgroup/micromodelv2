@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'micromodelv2'.
 //
-// Model version                  : 1.89
+// Model version                  : 1.94
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Aug  3 09:31:37 2021
+// C/C++ source code generated on : Tue Aug  3 14:28:18 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -378,6 +378,7 @@ void micromodelv2_step(void)
     }
   }
 
+  micromodelv2_DW.v_des2 = micromodelv2_B.v_des;
   micromodelv2_B.dv_minus = micromodelv2_B.MovingAverage1.MovingAverage -
     micromodelv2_B.In1.Linear.X;
   if (!(micromodelv2_B.dv_minus < 0.0)) {
