@@ -56,9 +56,6 @@ extern SimulinkParameterGetter<real64_T, double> ParamGet_micromodelv2_41;
 // For Block micromodelv2/Get Parameter7
 extern SimulinkParameterGetter<boolean_T, bool> ParamGet_micromodelv2_67;
 
-// For Block micromodelv2/Get Parameter8
-extern SimulinkParameterGetter<boolean_T, bool> ParamGet_micromodelv2_69;
-
 void slros_node_init(int argc, char** argv);
 
 #endif
